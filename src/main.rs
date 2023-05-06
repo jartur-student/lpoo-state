@@ -33,7 +33,6 @@ impl Mario {
             (State::SmallMario, 1) => {
                 println!("Game over!");
                 println!("Restarting game...");
-                self.state = State::SmallMario;
                 self.lives = 5;
             }
             (State::SmallMario, _) => self.lives -= 1,

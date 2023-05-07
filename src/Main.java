@@ -59,7 +59,7 @@ class BigMario implements State {
   public void pickUpPowerUp(PowerUp powerUp) {
     switch (powerUp) {
       case MUSHROOM:
-        mario.setState(new BigMario(mario));
+        mario.setLives(mario.getLives() + 1);
         break;
       case FIRE_FLOWER:
         mario.setState(new FireMario(mario));
@@ -89,7 +89,7 @@ class FireMario implements State {
   public void pickUpPowerUp(PowerUp powerUp) {
     switch (powerUp) {
       case MUSHROOM:
-        mario.setState(new BigMario(mario));
+        mario.setLives(mario.getLives() + 1);
         break;
       case FIRE_FLOWER:
         mario.setState(new FireMario(mario));
@@ -119,7 +119,7 @@ class CapeMario implements State {
   public void pickUpPowerUp(PowerUp powerUp) {
     switch (powerUp) {
       case MUSHROOM:
-        mario.setState(new BigMario(mario));
+        mario.setLives(mario.getLives() + 1);
         break;
       case FIRE_FLOWER:
         mario.setState(new FireMario(mario));

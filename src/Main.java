@@ -20,8 +20,8 @@ class SmallMario implements State {
   }
 
   public void takeDamage() {
-    mario.setLives(mario.getLives() - 1);
-    if (mario.getLives() <= 0) {
+    mario.setHearts(mario.getHearts() - 1);
+    if (mario.getHearts() <= 0) {
       mario.setState(new DeadMario(mario));
     }
   }
@@ -59,7 +59,7 @@ class BigMario implements State {
   public void pickUpPowerUp(PowerUp powerUp) {
     switch (powerUp) {
       case MUSHROOM:
-        mario.setLives(mario.getLives() + 1);
+        mario.setHearts(mario.getHearts() + 1);
         break;
       case FIRE_FLOWER:
         mario.setState(new FireMario(mario));
@@ -71,7 +71,7 @@ class BigMario implements State {
   }
 
   public void pressAttack() {
-    System.out.println("Mario is big, he can attack");
+    System.out.println("Mario is big, he can't attack");
   }
 }
 
@@ -89,7 +89,7 @@ class FireMario implements State {
   public void pickUpPowerUp(PowerUp powerUp) {
     switch (powerUp) {
       case MUSHROOM:
-        mario.setLives(mario.getLives() + 1);
+        mario.setHearts(mario.getHearts() + 1);
         break;
       case FIRE_FLOWER:
         mario.setState(new FireMario(mario));
@@ -119,7 +119,7 @@ class CapeMario implements State {
   public void pickUpPowerUp(PowerUp powerUp) {
     switch (powerUp) {
       case MUSHROOM:
-        mario.setLives(mario.getLives() + 1);
+        mario.setHearts(mario.getHearts() + 1);
         break;
       case FIRE_FLOWER:
         mario.setState(new FireMario(mario));
@@ -157,11 +157,11 @@ class DeadMario implements State {
 
 class Mario {
   private State state;
-  private int lives;
+  private int hearts;
 
   public Mario() {
     state = new SmallMario(this);
-    lives = 5;
+    hearts = 5;
   }
 
   public State getState() {
@@ -172,12 +172,12 @@ class Mario {
     this.state = state;
   }
 
-  public int getLives() {
-    return lives;
+  public int getHearts() {
+    return hearts;
   }
 
-  public void setLives(int lives) {
-    this.lives = lives;
+  public void setHearts(int lives) {
+    this.hearts = lives;
   }
 
   public void takeDamage() {
@@ -197,7 +197,7 @@ class Mario {
 
   @Override
   public String toString() {
-    return "Mario { state: " + state.getClass().getName() + ", lives: " + lives + " }";
+    return "Mario { state: " + state.getClass().getName() + ", hearts: " + hearts + " }";
   }
 }
 
